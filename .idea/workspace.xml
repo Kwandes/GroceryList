@@ -67,30 +67,42 @@
       <option name="project" value="LOCAL" />
       <updated>1581003446972</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added quantity to GroceryItemOrder">
+      <created>1581004454541</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1581004454541</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="what even" />
     <MESSAGE value="Finished GroceryItemOrder Class with Getters and Setters" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished GroceryItemOrder Class with Getters and Setters" />
+    <MESSAGE value="added quantity to GroceryItemOrder" />
+    <option name="LAST_COMMIT_MESSAGE" value="added quantity to GroceryItemOrder" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="773" y="221" width="374" height="595" key="#com.intellij.ide.util.MemberChooser" timestamp="1581004407276">
+    <state x="773" y="221" width="484" height="595" key="#com.intellij.ide.util.MemberChooser" timestamp="1581005030600">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="773" y="221" width="374" height="595" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1581004407276" />
-    <state x="601" y="32" width="718" height="973" key="CommitChangelistDialog2" timestamp="1581003446537">
+    <state x="773" y="221" width="484" height="595" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1581005030600" />
+    <state x="601" y="32" width="718" height="973" key="CommitChangelistDialog2" timestamp="1581004454313">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="601" y="32" width="718" height="973" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1581003446537" />
-    <state x="560" y="253" width="800" height="531" key="Vcs.Push.Dialog.v2" timestamp="1581003455354">
+    <state x="601" y="32" width="718" height="973" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1581004454313" />
+    <state x="560" y="253" width="800" height="531" key="Vcs.Push.Dialog.v2" timestamp="1581004463604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="560" y="253" width="800" height="531" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1581003455354" />
+    <state x="560" y="253" width="800" height="531" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1581004463604" />
     <state x="761" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581003909963">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="761" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1581003909963" />
+    <state x="628" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1581005067820">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="628" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1581005067820" />
   </component>
 </project>

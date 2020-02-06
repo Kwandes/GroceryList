@@ -11,6 +11,12 @@ public class GroceryItemOrder {
         this.quantity = quantity;
     }
 
+    @Override
+    public String toString()
+    {
+        return  "name = " + name + " price each = " + price + " quantity= " + quantity + " price = " + price*quantity +"\n";
+    }
+
     public int getQuantity()
     {
         return quantity;
