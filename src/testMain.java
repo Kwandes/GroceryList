@@ -4,11 +4,7 @@ public class testMain
 {
     public static void main(String[] args) throws InterruptedException
     {
-        try
-        {
-            Musik music = new Musik("musik");
-            music.play();
-        } catch (Exception e) {System.out.println(e);}
+        // Important Bits
 
         GroceryList shoppingList = new GroceryList();
 
@@ -19,8 +15,14 @@ public class testMain
 
         System.out.println(shoppingList.getTotalCost());
 
-        Scanner console = new Scanner(System.in);
+        // You-can-ignore-this-bits
+        try
+        {
+            Musik music = new Musik("musik");
+            music.play();
+        } catch (Exception e) {System.out.println(e);}
 
+        Scanner console = new Scanner(System.in);
         console.nextLine();
     }
 }
