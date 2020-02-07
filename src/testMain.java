@@ -9,6 +9,13 @@ public class testMain
 {
     public static void main(String[] args) throws FileNotFoundException
     {
+
+        // Extra Bits
+
+        UserInterface ui = new UserInterface();
+        ui.display();
+
+
         File products = new File("Products");
         Scanner in = new Scanner ( products );
         Random rand = new Random ();
@@ -44,7 +51,7 @@ public class testMain
         try
         {
             Musik music = new Musik("musik");
-            music.play();
+            //music.play();
         } catch (Exception e) {System.out.println(e);}
 
         Scanner console = new Scanner(System.in);

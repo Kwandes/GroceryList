@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3f8df98a-3e5f-4b66-ae63-117ce0bdcdc2" name="Default Changelist" comment="">
+    <list default="true" id="3f8df98a-3e5f-4b66-ae63-117ce0bdcdc2" name="Default Changelist" comment="added quantity to GroceryItemOrder">
+      <change afterPath="$PROJECT_DIR$/out/production/GroceryList/META-INF/GroceryList.kotlin_module" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/GroceryList/UserInterface.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/UserInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GroceryItemOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GroceryItemOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GroceryList/GroceryList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GroceryList/GroceryList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GroceryList/testMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GroceryList/testMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/testMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,17 +41,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="RunManager">
+    <configuration name="testMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="testMain" />
+      <module name="GroceryList" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <item itemvalue="Application.testMain" />
       </list>
-    </option>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -109,7 +116,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -126,10 +135,27 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="773" y="221" width="484" height="595" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1581005030600" />
-    <state x="601" y="32" width="718" height="973" key="CommitChangelistDialog2" timestamp="1581004454313">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="601" y="33" width="718" height="973" key="CommitChangelistDialog2" timestamp="1581063985976">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="601" y="32" width="718" height="973" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1581004454313" />
+    <state x="601" y="33" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1581063985976" />
+    <state width="1877" height="267" key="GridCell.Tab.0.bottom" timestamp="1581067728706">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="267" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1581067728706" />
+    <state width="1877" height="267" key="GridCell.Tab.0.center" timestamp="1581067728705">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="267" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1581067728705" />
+    <state width="1877" height="267" key="GridCell.Tab.0.left" timestamp="1581067728705">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="267" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1581067728705" />
+    <state width="1877" height="267" key="GridCell.Tab.0.right" timestamp="1581067728706">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="267" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1581067728706" />
     <state x="560" y="253" width="800" height="531" key="Vcs.Push.Dialog.v2" timestamp="1581004463604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
