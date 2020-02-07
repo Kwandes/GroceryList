@@ -11,12 +11,6 @@ public class GroceryItemOrder {
         this.quantity = quantity;
     }
 
-    @Override
-    public String toString()
-    {
-        return  "name = " + name + " price each = " + price + " quantity= " + quantity + " price = " + price*quantity +"\n";
-    }
-
     public int getQuantity()
     {
         return quantity;
@@ -45,5 +39,11 @@ public class GroceryItemOrder {
     public void setPrice(int price)
     {
         this.price = price;
+    }
+
+    @Override
+    public String toString()
+    {
+        return  "\nName : " + name + ", Price : " + price + ", Quantity : " + quantity + ", Price : " + price*quantity;
     }
 }
