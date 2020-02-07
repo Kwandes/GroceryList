@@ -1,17 +1,12 @@
-import org.w3c.dom.ls.LSOutput;
-
 public class GroceryList {
 
     private GroceryItemOrder[]  list = new GroceryItemOrder[10];
-    private int counter;
 
-    public GroceryList () {
-        this.counter = 0;
-    }
+    public GroceryList () {}
 
     public void add ( GroceryItemOrder item ) {
-        if (counter < 10) {
-            list[counter++] = item;
+        if (list.length < 10) {
+            list[list.length-1] = item;
         }
     }
 

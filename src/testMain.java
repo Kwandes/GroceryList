@@ -1,16 +1,12 @@
-import java.util.Scanner;
-
 public class testMain
 {
-    public static void main(String[] args) throws InterruptedException
+    public static void main(String[] args)
     {
-        // Important Bits
-
-        GroceryList shoppingList = new GroceryList();
+        shoppingList = new GroceryList();
 
         for(int i = 0; i < 10; i++)
         {
-            shoppingList.add(new GroceryItemOrder("SpringOnions", 10, 1));
+            shoppingList.add(new GroceryItemOrder("SpringOnions", 10));
         }
 
         System.out.println(shoppingList.getTotalCost());
