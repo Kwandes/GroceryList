@@ -12,9 +12,6 @@ public class testMain
 
         // Extra Bits
 
-        UserInterface ui = new UserInterface();
-        ui.display();
-
 
         File products = new File("Products");
         Scanner in = new Scanner ( products );
@@ -30,22 +27,22 @@ public class testMain
         shoppingList.add(new GroceryItemOrder("Potatoes", 5, 21));
         shoppingList.add(new GroceryItemOrder("Lettuce", 21, 2));
         */
-        while ( in.hasNext() ) {
+        /*while ( in.hasNext() ) {
             boolean buy = rand.nextBoolean();
             String itemName = in.nextLine();
             if ( buy ) {
                 shoppingList.add(new GroceryItemOrder(itemName, rand.nextInt(299)+100, rand.nextInt(9)+1));
             }
-        }
+        }*/
 
-        shoppingList.checkBasket();
+        //shoppingList.checkBasket();
 
-        shoppingList.getTotalCost();
+        //shoppingList.getTotalCost();
 
-        String itemName = input.nextLine();
-        shoppingList.remove(itemName);
+        //String itemName = input.nextLine();
+        //shoppingList.remove(itemName);
 
-       shoppingList.checkBasket();
+       //shoppingList.checkBasket();
 
         // You-can-ignore-this-bits
         try
@@ -54,7 +51,12 @@ public class testMain
             //music.play();
         } catch (Exception e) {System.out.println(e);}
 
-        Scanner console = new Scanner(System.in);
-        console.nextLine();
+        // Extra Bits
+        Wallet wallet = new Wallet(420, "Rupie");
+        UserInterface ui = new UserInterface(shoppingList, wallet);
+        ui.display();
+
+        //Scanner console = new Scanner(System.in);
+        //console.nextLine();
     }
 }
