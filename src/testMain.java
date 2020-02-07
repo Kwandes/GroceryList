@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -11,6 +12,7 @@ public class testMain
         File products = new File("Products");
         Scanner in = new Scanner ( products );
         Random rand = new Random ();
+        Scanner input = new Scanner ( System.in );
 
         GroceryList shoppingList = new GroceryList();
 
@@ -29,9 +31,14 @@ public class testMain
             }
         }
 
-        System.out.println(shoppingList.toString());
+        shoppingList.checkBasket();
 
         shoppingList.getTotalCost();
+
+        String itemName = input.nextLine();
+        shoppingList.remove(itemName);
+
+       shoppingList.checkBasket();
 
         // You-can-ignore-this-bits
         try
@@ -42,7 +49,5 @@ public class testMain
 
         Scanner console = new Scanner(System.in);
         console.nextLine();
-
-        // Fuck you Cris read the error messages instead of randomly merging shit what are you alex 2.0?
     }
 }
