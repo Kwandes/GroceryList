@@ -24,5 +24,7 @@ public class testMain
 
         Scanner console = new Scanner(System.in);
         console.nextLine();
+
+        // Fuck you Cris read the error messages instead of randomly merging shit what are you alex 2.0?
     }
 }
