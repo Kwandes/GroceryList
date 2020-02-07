@@ -23,7 +23,7 @@ public class testMain
         */
         while ( in.hasNext() ) {
             boolean buy = rand.nextBoolean();
-            String itemName = in.next();
+            String itemName = in.nextLine();
             if ( buy ) {
                 shoppingList.add(new GroceryItemOrder(itemName, rand.nextInt(299)+100, rand.nextInt(9)+1));
             }
