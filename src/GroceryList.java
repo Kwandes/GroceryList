@@ -59,7 +59,7 @@ public class GroceryList {
 
     public void printReceipt () {
         for ( int i = 0; i < list.size(); i++ ) {
-            System.out.printf("\t %1d x %3s %3s %4d %5s %6d",
+            System.out.printf("\n %1d x %3s %3s %4d %5s %6d",
                                 list.get(i).getQuantity(), list.get(i).getName(), "for", list.get(i).getPrice(),
                                 this.currency, (list.get(i)).getQuantity()*list.get(i).getPrice());
         }

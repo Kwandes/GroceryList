@@ -44,7 +44,6 @@ public class testMain
 
        //shoppingList.checkBasket();
 
-       shoppingList.printReceipt();
 
         // You-can-ignore-this-bits
         try

@@ -116,6 +116,10 @@ public class UserInterface
         switch (input())
         {
             case "1":
+                basket.add(new GroceryItemOrder("Potatoes", 300, 10));
+                basket.add(new GroceryItemOrder("Totatos", 200, 30));
+                basket.add(new GroceryItemOrder("Underage Human Resources", 3000, 5));
+
                 basket.checkBasket();
                 System.out.print("press enter to continue");
                 input();
@@ -125,7 +129,10 @@ public class UserInterface
                 break;
             case "3":
                 wallet.addFunds(basket.getTotalCost() * -1);
-                //basket.clearBasket();
+                basket.printReceipt();
+                basket.clearBasket();
+                System.out.print("press enter to continue");
+                input();
                 break;
             case "4":
                 this.screenNumber = 4;
