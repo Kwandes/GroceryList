@@ -26,14 +26,20 @@ public class UserInterface
     int screenWidth = 50;
     char symbol = '-';
     String shopName = "Black Market";
+    GroceryList basket;
+    Wallet wallet;
 
     // Menu navigation
     private int screenNumber = 1;
 
+    public UserInterface(GroceryList shoppingList, Wallet wallet)
+    {
+        this.basket = shoppingList;
+        this.wallet = wallet;
+    }
+
     public void display()
     {
-        headline(this.shopName, "Your friendly neighborhood vendors");
-
         while(true)
         {
             System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
@@ -110,13 +116,16 @@ public class UserInterface
         switch (input())
         {
             case "1":
-                this.screenNumber = 2;
+                basket.checkBasket();
+                System.out.print("press enter to continue");
+                input();
                 break;
             case "2":
-                this.screenNumber = 3;
+                basket.remove(input());
                 break;
             case "3":
-                this.screenNumber = 4;
+                wallet.addFunds(basket.getTotalCost() * -1);
+                //basket.clearBasket();
                 break;
             case "4":
                 this.screenNumber = 4;
@@ -148,7 +157,9 @@ public class UserInterface
                 this.screenNumber = 2;
                 break;
             case "2":
-                this.screenNumber = 3;
+                basket.checkBasket();
+                System.out.print("press enter to continue");
+                input();
                 break;
             case "3":
                 this.screenNumber = 4;
@@ -167,28 +178,50 @@ public class UserInterface
     {
         headline(this.shopName, "What is thy query?");
 
-        System.out.println("1> Buy Stuff");
-        System.out.println("2> Check my Basket");
-        System.out.println("3> Check my Wallet");
-        System.out.println("4> Contact Support");
-        System.out.println("5> End my Misery");
+        System.out.println("You have " + wallet.getAmount() + wallet.getCurrency() + " in your wallet");
+        System.out.println("What would you like to do next?");
+
+        System.out.println("1> Add Money");
+        System.out.println("2> Convert currency");
+        System.out.println("3> Contact Support");
+        System.out.println("4> End my Misery");
         System.out.print(">");
 
         switch (input())
         {
             case "1":
-                this.screenNumber = 2;
+                System.out.print("How many munies would you like to add: ");
+                boolean checkSuccessful = false;
+                int rupieAmount = 0;
+                while (!checkSuccessful)
+                {
+                    try
+                    {
+                        rupieAmount = Integer.parseInt(input());
+
+                        if (rupieAmount < 0)
+                        {
+                            System.out.println("You can only add positive amount of rupies");
+                        }
+                        else checkSuccessful = true;
+
+                    } catch (NumberFormatException e)
+                    {
+                        System.out.println("Wrong input, it has to be an integer");
+                    }
+
+                }
+                wallet.addFunds(rupieAmount);
                 break;
             case "2":
-                this.screenNumber = 3;
+                System.out.println("Currently not implemented, contact support");
+                System.out.print("press enter to continue");
+                input();
                 break;
             case "3":
-                this.screenNumber = 4;
-                break;
-            case "4":
                 this.screenNumber = 5;
                 break;
-            case "5":
+            case "4":
                 this.screenNumber = 99;
                 break;
         }
@@ -197,33 +230,12 @@ public class UserInterface
 
     private void supportMenu()
     {
-        headline(this.shopName, "What is thy query?");
+        headline(this.shopName, "Hi this is Prajit talking. How can I help you today sir?");
 
-        System.out.println("1> Buy Stuff");
-        System.out.println("2> Check my Basket");
-        System.out.println("3> Check my Wallet");
-        System.out.println("4> Contact Support");
-        System.out.println("5> End my Misery");
-        System.out.print(">");
-
-        switch (input())
-        {
-            case "1":
-                this.screenNumber = 2;
-                break;
-            case "2":
-                this.screenNumber = 3;
-                break;
-            case "3":
-                this.screenNumber = 4;
-                break;
-            case "4":
-                this.screenNumber = 5;
-                break;
-            case "5":
-                this.screenNumber = 99;
-                break;
-        }
+        System.out.println("Actually I am currently unable to help you for I do now know how to help you sir I am so sorry I will return you to the main menu soon");
+        System.out.print("press enter to continue");
+        input();
+        this.screenNumber = 1;
 
     }
 
