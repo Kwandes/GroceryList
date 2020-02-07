@@ -5,11 +5,18 @@ public class GroceryList {
 
     //region Fields/Attributes
     private ArrayList<GroceryItemOrder> list = new ArrayList<GroceryItemOrder>();
+    private String currency;
     //private GroceryItemOrder[]  list = new GroceryItemOrder[10];
     //endregion
 
     //region Constructors
-    public GroceryList () {}
+    public GroceryList () {
+        this.currency = "DKK";
+    }
+
+    public GroceryList ( String currency ) {
+        this.currency = currency;
+    }
     //endregion
 
     //region Methods
@@ -46,6 +53,19 @@ public class GroceryList {
         }
     }
 
+    public void clearBasket () {
+        list.clear();
+    }
+
+    public void printReceipt () {
+        for ( int i = 0; i < list.size(); i++ ) {
+            System.out.printf("\t %1d x %3s %3s %4d %5s %6d",
+                                list.get(i).getQuantity(), list.get(i).getName(), "for", list.get(i).getPrice(),
+                                this.currency, (list.get(i)).getQuantity()*list.get(i).getPrice());
+        }
+        System.out.println();
+    }
+
     public int  getTotalCost () {
         int totalCost = 0;
         for ( int i = 0; i < list.size(); i ++ ) {
@@ -60,11 +80,19 @@ public class GroceryList {
     public void setList(ArrayList<GroceryItemOrder> list) {
         this.list = list;
     }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
     //endregion
 
     //region Getters
     public ArrayList<GroceryItemOrder> getList() {
         return list;
+    }
+
+    public String getCurrency() {
+        return currency;
     }
     //endregion
 
