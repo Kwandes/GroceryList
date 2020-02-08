@@ -34,6 +34,8 @@ public class Musik
         this.filePath = "musik/" + sounds.get(soundNum.nextInt(sounds.size()));;
         audio = AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
 
+        // Instead of a random track, play this specific...song
+        audio = AudioSystem.getAudioInputStream(new File("musik/combined_depression.wav").getAbsoluteFile());
         clip = AudioSystem.getClip();
         clip.open(audio);
     }
