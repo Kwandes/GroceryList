@@ -9,17 +9,7 @@ public class testMain
 {
     public static void main(String[] args) throws FileNotFoundException
     {
-
-        // Extra Bits
-
-
-        File products = new File("Products");
-        Scanner in = new Scanner ( products );
-        Random rand = new Random ();
-        Scanner input = new Scanner ( System.in );
-
-        GroceryList shoppingList = new GroceryList();
-
+        //region Old, Primitive Way
         /*  OLD WAY
         shoppingList.add(new GroceryItemOrder("SpringOnions", 10, 3));
         shoppingList.add(new GroceryItemOrder("Carrots", 13, 5));
@@ -43,21 +33,25 @@ public class testMain
         //shoppingList.remove(itemName);
 
        //shoppingList.checkBasket();
+        //endregion
 
-
-        // You-can-ignore-this-bits
+        //region You-can-ignore-this-bits
         try
         {
             Musik music = new Musik("musik");
             //music.play();
         } catch (Exception e) {System.out.println(e);}
+        //endregion
 
-        // Extra Bits
+        //region Important Bits
+        GroceryList shoppingList = new GroceryList();
         Wallet wallet = new Wallet(420, "Rupie");
-        UserInterface ui = new UserInterface(shoppingList, wallet);
+        Products products = new Products();
+
+        UserInterface ui = new UserInterface(shoppingList, wallet, products);
+
         ui.display();
 
-        //Scanner console = new Scanner(System.in);
-        //console.nextLine();
+        //endregion
     }
 }

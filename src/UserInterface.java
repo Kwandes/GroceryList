@@ -28,14 +28,16 @@ public class UserInterface
     String shopName = "Black Market";
     GroceryList basket;
     Wallet wallet;
+    Products products;
 
     // Menu navigation
     private int screenNumber = 1;
 
-    public UserInterface(GroceryList shoppingList, Wallet wallet)
+    public UserInterface(GroceryList shoppingList, Wallet wallet, Products products)
     {
         this.basket = shoppingList;
         this.wallet = wallet;
+        this.products = products;
     }
 
     public void display()
@@ -49,7 +51,7 @@ public class UserInterface
                     mainMenu();
                     break;
                 case 2:
-                    buyMenu();
+                    browseMenu();
                     break;
                 case 3:
                     basketMenu();
@@ -74,7 +76,7 @@ public class UserInterface
     {
         headline(this.shopName, "What is thy query?");
 
-        System.out.println("1> Buy Stuff");
+        System.out.println("1> Browse Stuff");
         System.out.println("2> Check my Basket");
         System.out.println("3> Check my Wallet");
         System.out.println("4> Contact Support");
@@ -101,26 +103,23 @@ public class UserInterface
         }
     }
 
-    private void buyMenu()
+    private void browseMenu()
     {
         headline(this.shopName, "Basket time");
 
-        System.out.println("1> What is in the Basket");
+        System.out.println("1> Show available Items");
         System.out.println("2> Remove an Item");
         System.out.println("3> Check Out");
-        System.out.println("4> Check my Wallet");
-        System.out.println("5> Contact Support");
-        System.out.println("6> End my Misery");
+        System.out.println("4> What is in the Basket");
+        System.out.println("5> Check my Wallet");
+        System.out.println("6> Contact Support");
+        System.out.println("7> End my Misery");
         System.out.print(">");
 
         switch (input())
         {
             case "1":
-                basket.add(new GroceryItemOrder("Potatoes", 300, 10));
-                basket.add(new GroceryItemOrder("Totatos", 200, 30));
-                basket.add(new GroceryItemOrder("Underage Human Resources", 3000, 5));
-
-                basket.checkBasket();
+                System.out.println(this.products);
                 System.out.print("press enter to continue");
                 input();
                 break;
@@ -135,12 +134,21 @@ public class UserInterface
                 input();
                 break;
             case "4":
-                this.screenNumber = 4;
+                basket.add(new GroceryItemOrder("Potatoes", 300, 10));
+                basket.add(new GroceryItemOrder("Totatos", 200, 30));
+                basket.add(new GroceryItemOrder("Underage Human Resources", 3000, 5));
+
+                basket.checkBasket();
+                System.out.print("press enter to continue");
+                input();
                 break;
             case "5":
-                this.screenNumber = 5;
+                this.screenNumber = 4;
                 break;
             case "6":
+                this.screenNumber = 5;
+                break;
+            case "7":
                 this.screenNumber = 99;
                 break;
         }
@@ -151,7 +159,7 @@ public class UserInterface
     {
         headline(this.shopName, "What is thy query?");
 
-        System.out.println("1> Buy Stuff");
+        System.out.println("1> Browse Items");
         System.out.println("2> Check my Basket");
         System.out.println("3> Check my Wallet");
         System.out.println("4> Contact Support");
@@ -248,6 +256,7 @@ public class UserInterface
 
     private void quitMenu()
     {
+        headline("Black Market Exit", "Remember to CLose the Door");
         System.out.println(ANSI_RED + "Bye Loser" + ANSI_RESET);
         System.exit(0);
     }

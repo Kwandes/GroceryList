@@ -1,0 +1,24 @@
+Eggs, 10
+Bread, 20
+Beer, 35
+Potatoes, 4
+Tomatoes, 7
+Lettuce, 9
+Carrots, 6
+Onions, 7
+Yogurt, 20
+Desk, 1000
+Chair, 300
+Biscuits, 24
+Pretzels, 18
+Milk, 12
+Cheese, 28
+Canned Tuna, 33
+Salt, 8
+Pepper, 10
+Oregano, 4
+Chili, 13
+Bell Peppers, 16
+Olive Oil, 42
+Olives, 40
+Sweet Corn, 20
