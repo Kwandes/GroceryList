@@ -1,1 +1,6 @@
 *.xml
+*/out/*
+
+out/production/GroceryList/UserInterface.class
+
+out/production/GroceryList/GroceryList.class

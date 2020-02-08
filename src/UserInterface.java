@@ -23,7 +23,7 @@ public class UserInterface
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
-    int screenWidth = 50;
+    int screenWidth = 200;
     char symbol = '-';
     String shopName = "Black Market";
     GroceryList basket;
@@ -76,11 +76,14 @@ public class UserInterface
     {
         headline(this.shopName, "What is thy query?");
 
-        System.out.println("1> Browse Stuff");
-        System.out.println("2> Check my Basket");
-        System.out.println("3> Check my Wallet");
-        System.out.println("4> Contact Support");
-        System.out.println("5> End my Misery");
+        promptSelection();
+        System.out.print(ANSI_GREEN);
+        System.out.println("1: Browse Stuff");
+        System.out.println("2: Check my Basket");
+        System.out.println("3: Check my Wallet");
+        System.out.println("4: Contact Support");
+        System.out.println("5: End my Misery");
+        System.out.print(ANSI_RESET);
         System.out.print(">");
 
         switch (input())
@@ -107,21 +110,31 @@ public class UserInterface
     {
         headline(this.shopName, "Basket time");
 
+        promptSelection();
+        System.out.print(ANSI_GREEN);
         System.out.println("1> Browse Goods");
         System.out.println("2> Remove an Item");
         System.out.println("3> Check Out");
         System.out.println("4> What is in the Basket");
         System.out.println("5> Check my Wallet");
         System.out.println("6> Contact Support");
-        System.out.println("7> End my Misery");
+        System.out.println("7> Return to Main Menu");
+        System.out.println("8> End my Misery");
+        System.out.print(ANSI_RESET);
         System.out.print(">");
 
         switch (input())
         {
             case "1":
+                // Print out available Items
+                System.out.println(ANSI_YELLOW + "Available Items: " + ANSI_RESET);
+                System.out.print(ANSI_GREEN);
                 System.out.println(this.products);
+                System.out.print(ANSI_RESET);
                 System.out.println();
-                System.out.print("To add an item, write it's name (type return to cancel): ");
+
+                // Item selection
+                System.out.print(ANSI_YELLOW + "To add an item, write it's name (type return to cancel): " + ANSI_RESET);
                 boolean checkSuccessfull = false;
                 // Loop for adding items to the basket
                 while (!checkSuccessfull)
@@ -133,28 +146,28 @@ public class UserInterface
                     }
                     else if (products.getProduct(item) == null)
                     {
-                        System.out.println("No such item, try again");
+                        System.out.println(ANSI_RED + "No such item, try again" + ANSI_RESET);
                     }
                     else
                     {
                         int quantity;
                         try
                         {
-                            System.out.println("How many do you want: ");
+                            System.out.println(ANSI_YELLOW + "How many do you want: " + ANSI_RESET);
                             quantity = Integer.parseInt(input());
                             if (quantity < 0)
                             {
-                                System.out.println("You can only add positive amount of items");
+                                System.out.println(ANSI_RED + "You can only add positive amount of items" + ANSI_RESET);
                             }
 
                             basket.add(new GroceryItemOrder( products.getProduct(item).getName(), products.getProduct(item).getPrice(), quantity));
-                            System.out.println(products.getProduct(item).getName() + " added to the basket");
-                            System.out.println("Press enter to continue");
+                            System.out.println(ANSI_GREEN + products.getProduct(item).getName() + " added to the basket" + ANSI_RESET);
+                            promptEnter();
                             input();
                             checkSuccessfull = true;
                         } catch (NumberFormatException e)
                         {
-                            System.out.println("Wrong input, it has to be an integer");
+                            System.out.println(ANSI_RED + "Wrong input, it has to be an integer" + ANSI_RESET);
                         }
                     }
                 }
@@ -164,14 +177,20 @@ public class UserInterface
                 break;
             case "3":
                 wallet.addFunds(basket.getTotalCost() * -1);
+                System.out.print(ANSI_YELLOW + "Receipt: " + ANSI_RESET);
+                System.out.print(ANSI_GREEN);
                 basket.printReceipt();
+                System.out.print(ANSI_RESET);
                 basket.clearBasket();
-                System.out.print("press enter to continue");
+                promptEnter();
                 input();
                 break;
             case "4":
+                System.out.println(ANSI_YELLOW + "Your Basket: " + ANSI_RESET);
+                System.out.print(ANSI_GREEN);
                 basket.checkBasket();
-                System.out.print("press enter to continue");
+                System.out.print(ANSI_RESET);
+                promptEnter();
                 input();
                 break;
             case "5":
@@ -181,6 +200,9 @@ public class UserInterface
                 this.screenNumber = 5;
                 break;
             case "7":
+                this.screenNumber = 1;
+                break;
+            case "8":
                 this.screenNumber = 99;
                 break;
         }
@@ -191,11 +213,15 @@ public class UserInterface
     {
         headline(this.shopName, "What is thy query?");
 
+        promptSelection();
+        System.out.print(ANSI_GREEN);
         System.out.println("1> Browse Items");
         System.out.println("2> Check my Basket");
         System.out.println("3> Check my Wallet");
         System.out.println("4> Contact Support");
-        System.out.println("5> End my Misery");
+        System.out.println("5> Return to Main Menu");
+        System.out.println("6> End my Misery");
+        System.out.print(ANSI_RESET);
         System.out.print(">");
 
         switch (input())
@@ -204,8 +230,11 @@ public class UserInterface
                 this.screenNumber = 2;
                 break;
             case "2":
+                System.out.println(ANSI_YELLOW + "Your Basket: " + ANSI_RESET);
+                System.out.print(ANSI_GREEN);
                 basket.checkBasket();
-                System.out.print("press enter to continue");
+                System.out.print(ANSI_RESET);
+                promptEnter();
                 input();
                 break;
             case "3":
@@ -215,6 +244,9 @@ public class UserInterface
                 this.screenNumber = 5;
                 break;
             case "5":
+                this.screenNumber = 1;
+                break;
+            case "6":
                 this.screenNumber = 99;
                 break;
         }
@@ -225,19 +257,23 @@ public class UserInterface
     {
         headline(this.shopName, "What is thy query?");
 
-        System.out.println("You have " + wallet.getAmount() + wallet.getCurrency() + " in your wallet");
-        System.out.println("What would you like to do next?");
+        System.out.println(ANSI_YELLOW + "You have " + ANSI_GREEN + wallet.getAmount() + wallet.getCurrency() + ANSI_YELLOW + " in your wallet" + ANSI_RESET);
 
+        promptSelection();
+        System.out.print(ANSI_GREEN);
         System.out.println("1> Add Money");
         System.out.println("2> Convert currency");
         System.out.println("3> Contact Support");
-        System.out.println("4> End my Misery");
+        System.out.println("4> Return to Main Menu");
+        System.out.println("5> End my Misery");
+        System.out.print(ANSI_RESET);
+
         System.out.print(">");
 
         switch (input())
         {
             case "1":
-                System.out.print("How many munies would you like to add: ");
+                System.out.print(ANSI_YELLOW + "How many munies would you like to add: " + ANSI_RESET);
                 boolean checkSuccessful = false;
                 int rupieAmount = 0;
                 while (!checkSuccessful)
@@ -248,27 +284,30 @@ public class UserInterface
 
                         if (rupieAmount < 0)
                         {
-                            System.out.println("You can only add positive amount of rupies");
+                            System.out.println(ANSI_RED + "You can only add positive amount of rupies" + ANSI_RESET);
                         }
                         else checkSuccessful = true;
 
                     } catch (NumberFormatException e)
                     {
-                        System.out.println("Wrong input, it has to be an integer");
+                        System.out.println(ANSI_RED + "Wrong input, it has to be an integer" + ANSI_RESET);
                     }
 
                 }
                 wallet.addFunds(rupieAmount);
                 break;
             case "2":
-                System.out.println("Currently not implemented, contact support");
-                System.out.print("press enter to continue");
+                System.out.println(ANSI_RED + "Currently not implemented, contact support" + ANSI_RESET);
+                promptEnter();
                 input();
                 break;
             case "3":
                 this.screenNumber = 5;
                 break;
             case "4":
+                this.screenNumber = 1;
+                break;
+            case "5":
                 this.screenNumber = 99;
                 break;
         }
@@ -279,8 +318,11 @@ public class UserInterface
     {
         headline(this.shopName, "Hi this is Prajit talking. How can I help you today sir?");
 
-        System.out.println("Actually I am currently unable to help you for I do now know how to help you sir I am so sorry I will return you to the main menu soon");
-        System.out.print("press enter to continue");
+        System.out.println(ANSI_RED +  "Actually I am currently unable to help you for I do now know how to help you sir I am so sorry I will return you to the main menu soon" + ANSI_RESET);
+
+        promptEnter();
+
+        System.out.print(ANSI_RESET);
         input();
         this.screenNumber = 1;
 
@@ -330,11 +372,21 @@ public class UserInterface
     private void headline(String headline, String subtext)
     {
         System.out.print(ANSI_PURPLE);
-        print();
+        print('_');
         print(headline);
         if (!subtext.isBlank()) print(subtext);
-        print();
+        print('_');
         System.out.print(ANSI_RESET);
+    }
+
+    private void promptSelection()
+    {
+        System.out.println(ANSI_YELLOW +  "What would you like to do?" + ANSI_RESET);
+    }
+
+    private void promptEnter()
+    {
+        System.out.println(ANSI_YELLOW +  "press enter to continue" + ANSI_RESET);
     }
 
     private String input()

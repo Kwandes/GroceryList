@@ -71,7 +71,8 @@ public class GroceryList {
         for ( int i = 0; i < list.size(); i ++ ) {
             totalCost += list.get(i).getPrice() * list.get(i).getQuantity();
         }
-        System.out.println("Total Cost of the Grocery List : " + totalCost + "DKK.");
+        // Please don't print stuff yourself
+        //System.out.println("Total Cost of the Grocery List : " + totalCost + "DKK.");
         return totalCost;
     }
     //endregion
