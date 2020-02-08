@@ -107,7 +107,7 @@ public class UserInterface
     {
         headline(this.shopName, "Basket time");
 
-        System.out.println("1> Show available Items");
+        System.out.println("1> Browse Goods");
         System.out.println("2> Remove an Item");
         System.out.println("3> Check Out");
         System.out.println("4> What is in the Basket");
@@ -120,8 +120,44 @@ public class UserInterface
         {
             case "1":
                 System.out.println(this.products);
-                System.out.print("press enter to continue");
-                input();
+                System.out.println();
+                System.out.print("To add an item, write it's name (type return to cancel): ");
+                boolean checkSuccessfull = false;
+                // Loop for adding items to the basket
+                while (!checkSuccessfull)
+                {
+                    String item = input();
+                    if (item.toLowerCase().equals("return") || item.isEmpty())
+                    {
+                        checkSuccessfull = true;
+                    }
+                    else if (products.getProduct(item) == null)
+                    {
+                        System.out.println("No such item, try again");
+                    }
+                    else
+                    {
+                        int quantity;
+                        try
+                        {
+                            System.out.println("How many do you want: ");
+                            quantity = Integer.parseInt(input());
+                            if (quantity < 0)
+                            {
+                                System.out.println("You can only add positive amount of items");
+                            }
+
+                            basket.add(new GroceryItemOrder( products.getProduct(item).getName(), products.getProduct(item).getPrice(), quantity));
+                            System.out.println(products.getProduct(item).getName() + " added to the basket");
+                            System.out.println("Press enter to continue");
+                            input();
+                            checkSuccessfull = true;
+                        } catch (NumberFormatException e)
+                        {
+                            System.out.println("Wrong input, it has to be an integer");
+                        }
+                    }
+                }
                 break;
             case "2":
                 basket.remove(input());
@@ -134,10 +170,6 @@ public class UserInterface
                 input();
                 break;
             case "4":
-                basket.add(new GroceryItemOrder("Potatoes", 300, 10));
-                basket.add(new GroceryItemOrder("Totatos", 200, 30));
-                basket.add(new GroceryItemOrder("Underage Human Resources", 3000, 5));
-
                 basket.checkBasket();
                 System.out.print("press enter to continue");
                 input();

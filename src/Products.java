@@ -47,6 +47,15 @@ public class Products
         }
     }
 
+    public GroceryItemOrder getProduct(String productName)
+    {
+        for(int i = 0; i < productsList.size(); i++)
+        {
+            if (productsList.get(i).getName().toLowerCase().contains(productName.toLowerCase())) return productsList.get(i);
+        }
+        return null;
+    }
+
     public String toString()
     {
         String productsString = "";
