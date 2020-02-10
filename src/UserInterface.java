@@ -51,7 +51,7 @@ public class UserInterface
                     mainMenu();
                     break;
                 case 2:
-                    browseMenu();
+                    browseMenu(); //why is this not default?? i thought this was a shopping terminal? or is it an ATM + shopping terminal?
                     break;
                 case 3:
                     basketMenu();
@@ -66,7 +66,7 @@ public class UserInterface
                     quitMenu();
                     break;
                 default:
-                    mainMenu();
+                    mainMenu();//consider removing the loser part, kay isnt gonna like that
                     break;
             }
         }
