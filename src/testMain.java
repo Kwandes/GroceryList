@@ -7,8 +7,31 @@ import java.util.Random;
 
 public class testMain
 {
-    public static void main(String[] args) throws FileNotFoundException
+    private static void fooBar(boolean doItOrNot)
+    {        try
+            {
+                Musik music = new Musik("musik");
+                if (doItOrNot) music.play();
+            } catch (Exception e) {System.out.println(e);}
+    }
+
+    public static void main(String[] args)
     {
+        //region Important Bits
+
+        // Env variables
+        GroceryList shoppingList = new GroceryList();
+        Wallet wallet = new Wallet(420, "Rupie");
+        Products products = new Products();
+        UserInterface ui = new UserInterface(shoppingList, wallet, products);
+
+        // Not very important thing, set to False if you are around people
+        fooBar(false);
+
+        ui.display();
+
+        //endregion
+
         //region Old, Primitive Way
         /*  OLD WAY
         shoppingList.add(new GroceryItemOrder("SpringOnions", 10, 3));
@@ -32,26 +55,7 @@ public class testMain
         //String itemName = input.nextLine();
         //shoppingList.remove(itemName);
 
-       //shoppingList.checkBasket();
-        //endregion
-
-        //region You-can-ignore-this-bits
-        try
-        {
-            Musik music = new Musik("musik");
-            //music.play();
-        } catch (Exception e) {System.out.println(e);}
-        //endregion
-
-        //region Important Bits
-        GroceryList shoppingList = new GroceryList();
-        Wallet wallet = new Wallet(420, "Rupie");
-        Products products = new Products();
-
-        UserInterface ui = new UserInterface(shoppingList, wallet, products);
-
-        ui.display();
-
+        //shoppingList.checkBasket();
         //endregion
     }
 }

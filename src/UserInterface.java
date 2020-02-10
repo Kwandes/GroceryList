@@ -74,7 +74,7 @@ public class UserInterface
     //region Menus and stuff
     private void mainMenu()
     {
-        headline(this.shopName, "What is thy query?");
+        headline(this.shopName, "Welcome to Hell");
 
         promptSelection();
         System.out.print(ANSI_GREEN);
@@ -92,7 +92,12 @@ public class UserInterface
                 this.screenNumber = 2;
                 break;
             case "2":
-                this.screenNumber = 3;
+                System.out.println(ANSI_YELLOW + "Your Basket: " + ANSI_RESET);
+                System.out.print(ANSI_GREEN);
+                basket.checkBasket();
+                System.out.print(ANSI_RESET);
+                promptEnter();
+                input();
                 break;
             case "3":
                 this.screenNumber = 4;
@@ -108,7 +113,7 @@ public class UserInterface
 
     private void browseMenu()
     {
-        headline(this.shopName, "Basket time");
+        headline(this.shopName, "Shopping Time");
 
         promptSelection();
         System.out.print(ANSI_GREEN);
@@ -147,41 +152,64 @@ public class UserInterface
                     else if (products.getProduct(item) == null)
                     {
                         System.out.println(ANSI_RED + "No such item, try again" + ANSI_RESET);
+                        System.out.print(">");
                     }
                     else
                     {
+                        System.out.println(ANSI_YELLOW + "You've picked up " + ANSI_GREEN + products.getProduct(item).getName() + ANSI_RESET);
                         int quantity;
                         try
                         {
                             System.out.println(ANSI_YELLOW + "How many do you want: " + ANSI_RESET);
+                            System.out.print(">");
                             quantity = Integer.parseInt(input());
-                            if (quantity < 0)
+                            if (quantity <= 0)
                             {
                                 System.out.println(ANSI_RED + "You can only add positive amount of items" + ANSI_RESET);
                             }
+                            else
+                            {
+                                basket.add(new GroceryItemOrder( products.getProduct(item).getName(), products.getProduct(item).getPrice(), quantity));
+                                System.out.println(ANSI_GREEN + quantity + " " + products.getProduct(item).getName() + " added to the basket" + ANSI_RESET);
+                                promptEnter();
+                                input();
+                                checkSuccessfull = true;
+                            }
 
-                            basket.add(new GroceryItemOrder( products.getProduct(item).getName(), products.getProduct(item).getPrice(), quantity));
-                            System.out.println(ANSI_GREEN + products.getProduct(item).getName() + " added to the basket" + ANSI_RESET);
-                            promptEnter();
-                            input();
-                            checkSuccessfull = true;
                         } catch (NumberFormatException e)
                         {
                             System.out.println(ANSI_RED + "Wrong input, it has to be an integer" + ANSI_RESET);
+                            System.out.print(">");
                         }
                     }
                 }
                 break;
             case "2":
+                System.out.print(ANSI_YELLOW + "What product would you like to remove: " + ANSI_RESET);
+                System.out.println(ANSI_GREEN);
+                basket.checkBasket();
+                System.out.print(ANSI_RESET);
+                System.out.print(">");
+                System.out.print(ANSI_YELLOW);
                 basket.remove(input());
+                System.out.print(ANSI_RESET);;
+                promptEnter();
+                input();
                 break;
             case "3":
-                wallet.addFunds(basket.getTotalCost() * -1);
-                System.out.print(ANSI_YELLOW + "Receipt: " + ANSI_RESET);
-                System.out.print(ANSI_GREEN);
-                basket.printReceipt();
-                System.out.print(ANSI_RESET);
-                basket.clearBasket();
+                if (wallet.getAmount() < basket.getTotalCost())
+                {
+                    System.out.println(ANSI_RED + "You're too poor to afford this. Remove some items or acquire more currency" + ANSI_RESET);
+                }
+                else
+                {
+                    wallet.addFunds(basket.getTotalCost() * -1);
+                    System.out.print(ANSI_YELLOW + "Receipt: " + ANSI_RESET);
+                    System.out.print(ANSI_GREEN);
+                    basket.printReceipt();
+                    System.out.print(ANSI_RESET);
+                    basket.clearBasket();
+                }
                 promptEnter();
                 input();
                 break;

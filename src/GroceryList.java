@@ -33,13 +33,14 @@ public class GroceryList {
             System.out.println("Item not currently in the Basket.");
         }
         else {
+            System.out.println(list.get(index) + " has been removed");
             list.remove(index);
         }
     }
 
     public int searchList ( String name ) {
         for ( int i = 0; i < list.size(); i++) {
-            if (list.get(i).getName().equals(name)) {
+            if (list.get(i).getName().toLowerCase().contains(name.toLowerCase())) {
                 return i;
             }
         }
@@ -47,23 +48,29 @@ public class GroceryList {
     }
 
     public void checkBasket () {
-        System.out.println("The Basket currently contains : ");
-        for ( int i = 0; i < list.size(); i++ ) {
-            System.out.println("\t" + (i+1) + ". " + list.get(i).toString() + ";");
+        if(list.isEmpty()) System.out.println("The Basket is empty");
+        else
+        {
+            System.out.println("The Basket currently contains : ");
+            for ( int i = 0; i < list.size(); i++ ) {
+                System.out.println("\t" + (i+1) + ". " + list.get(i).toString() + ";");
+            }
         }
     }
 
-    public void clearBasket () {
-        list.clear();
-    }
+    public void clearBasket () {list.clear();}
 
     public void printReceipt () {
-        for ( int i = 0; i < list.size(); i++ ) {
-            System.out.printf("\n %1d x %3s %3s %4d %5s %6d",
-                                list.get(i).getQuantity(), list.get(i).getName(), "for", list.get(i).getPrice(),
-                                this.currency, (list.get(i)).getQuantity()*list.get(i).getPrice());
+        if(list.isEmpty()) System.out.println("The Basket is empty");
+        else
+        {
+            for ( int i = 0; i < list.size(); i++ ) {
+                System.out.printf("\n %1d x %3s %3s %4d %5s %6d",
+                        list.get(i).getQuantity(), list.get(i).getName(), "for", list.get(i).getPrice(),
+                        this.currency, (list.get(i)).getQuantity()*list.get(i).getPrice());
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 
     public int  getTotalCost () {
