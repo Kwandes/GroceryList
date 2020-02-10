@@ -1,9 +1,12 @@
+import org.w3c.dom.ls.LSOutput;
+
 import javax.swing.*;
 import javax.swing.plaf.synth.Region;
 import java.util.Scanner;
 
 public class UserInterface
 {
+    // ANSI codes for coloring the console output
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -23,14 +26,15 @@ public class UserInterface
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
-    int screenWidth = 200;
+    // Environment variables to control various aspects
+    int screenWidth = 200;  // How wide the logo should be
     char symbol = '-';
     String shopName = "Black Market";
     GroceryList basket;
     Wallet wallet;
     Products products;
 
-    // Menu navigation
+    // which screen to display next is controlled using a variable which is changed at the end of each menu depending on user input
     private int screenNumber = 1;
 
     public UserInterface(GroceryList shoppingList, Wallet wallet, Products products)
@@ -40,18 +44,19 @@ public class UserInterface
         this.products = products;
     }
 
+    // Main method that runs all menus in a loop, choosing which menu to display based on the screenNumber var
     public void display()
     {
         while(true)
         {
-            System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");   // Clear the terminal. Yes, there is an ANSI code for that but debugging
             switch (this.screenNumber)
             {
                 case 1:
                     mainMenu();
                     break;
                 case 2:
-                    browseMenu(); //why is this not default?? i thought this was a shopping terminal? or is it an ATM + shopping terminal?
+                    browseMenu();
                     break;
                 case 3:
                     basketMenu();
@@ -66,17 +71,22 @@ public class UserInterface
                     quitMenu();
                     break;
                 default:
-                    mainMenu();//consider removing the loser part, kay isnt gonna like that
+                    mainMenu();
                     break;
             }
         }
     }
+
     //region Menus and stuff
+    // All menus follow the scheme shown in this menu, therefore only this one is heavily commented
     private void mainMenu()
     {
+        // a set of prints that display the shop name and a subtext
         headline(this.shopName, "Welcome to Hell");
 
+        // A print prompting the user to input
         promptSelection();
+        // Display options
         System.out.print(ANSI_GREEN);
         System.out.println("1: Browse Stuff");
         System.out.println("2: Check my Basket");
@@ -86,16 +96,20 @@ public class UserInterface
         System.out.print(ANSI_RESET);
         System.out.print(">");
 
+        // Act depending on the user input
         switch (input())
         {
+            // If user input '1', set the next screen to open to be screen Number 2 (BasketMenu)
             case "1":
                 this.screenNumber = 2;
                 break;
+            // If user inputs '2', display contents of the basket
             case "2":
                 System.out.println(ANSI_YELLOW + "Your Basket: " + ANSI_RESET);
                 System.out.print(ANSI_GREEN);
                 basket.checkBasket();
                 System.out.print(ANSI_RESET);
+                // A print prompting user to press enter
                 promptEnter();
                 input();
                 break;
@@ -145,15 +159,19 @@ public class UserInterface
                 while (!checkSuccessfull)
                 {
                     String item = input();
+                    // Check if user wants to back out of the menu (keyword return)
                     if (item.toLowerCase().equals("return") || item.isEmpty())
                     {
+                        // Leave the loop
                         checkSuccessfull = true;
                     }
+                    // Check if given item exists
                     else if (products.getProduct(item) == null)
                     {
                         System.out.println(ANSI_RED + "No such item, try again" + ANSI_RESET);
                         System.out.print(">");
                     }
+                    // continue on to choosing item quantity
                     else
                     {
                         System.out.println(ANSI_YELLOW + "You've picked up " + ANSI_GREEN + products.getProduct(item).getName() + ANSI_RESET);
@@ -169,6 +187,7 @@ public class UserInterface
                             }
                             else
                             {
+                                // If all is correct, add an item to the basket and display it
                                 basket.add(new GroceryItemOrder( products.getProduct(item).getName(), products.getProduct(item).getPrice(), quantity));
                                 System.out.println(ANSI_GREEN + quantity + " " + products.getProduct(item).getName() + " added to the basket" + ANSI_RESET);
                                 promptEnter();
@@ -176,7 +195,7 @@ public class UserInterface
                                 checkSuccessfull = true;
                             }
 
-                        } catch (NumberFormatException e)
+                        } catch (NumberFormatException e)   // If item quantity input is invalid, warn the user and reset the loop
                         {
                             System.out.println(ANSI_RED + "Wrong input, it has to be an integer" + ANSI_RESET);
                             System.out.print(">");
@@ -197,11 +216,12 @@ public class UserInterface
                 input();
                 break;
             case "3":
+                // Check if wallet has enough funds
                 if (wallet.getAmount() < basket.getTotalCost())
                 {
                     System.out.println(ANSI_RED + "You're too poor to afford this. Remove some items or acquire more currency" + ANSI_RESET);
                 }
-                else
+                else    // enough funds, check out and print the receipt
                 {
                     wallet.addFunds(basket.getTotalCost() * -1);
                     System.out.print(ANSI_YELLOW + "Receipt: " + ANSI_RESET);
@@ -359,7 +379,40 @@ public class UserInterface
     private void quitMenu()
     {
         headline("Black Market Exit", "Remember to CLose the Door");
-        System.out.println(ANSI_RED + "Bye Loser" + ANSI_RESET);
+        System.out.print(ANSI_YELLOW);
+        System.out.print(""
+                +"                               ______________________________________\n"
+                +"                             ,'                                      `.\n"
+                +"                            /                                          \\\n"
+                +"                           |         "+ANSI_PURPLE+"THANKS FOR SHOPPING"+ANSI_YELLOW+"                |\n"
+                +"                            \\                                          /\n"
+                +"                             `._______  _____________________________,'\n"
+                +"                                     /,'\n"
+                +"                                    /'\n"
+                +"         \n"
+                +"                .--._.-----._.--._.----.\n"
+                +"               .' \\  (`._   (_)     _   \\\n"
+                +"             .'    |  '._)         (_)  |\n"
+                +"             \\ _.')\\      .----..---.   /\n"
+                +"             |(_.'  |    /    .-\\-.  \\  |\n"
+                +"             \\     0|    |   ( "+ANSI_RED+"O"+ANSI_YELLOW+"| "+ANSI_RED+"O"+ANSI_YELLOW+") | o|\n"
+                +"              |  _  |  .--.____.'._.-.  |\n"
+                +"              \\ (_) | o         -` .-`  |\n"
+                +"               |    \\   |`-._ _ _ _ _\\ /\n"
+                +"               \\    |   |  `. |_||_|   |\n"
+                +"               | o  |    \\_      \\     |     -.   .-.\n"
+                +"               |.-.  \\     `--..-'   O |     `.`-' .'\n"
+                +"             _.'  .' |     `-.-'      /-.__   ' .-'\n"
+                +"           .' `-.' '.|='=.='=.='=.='=|._/_ `-'.'\n"
+                +"           `-._  `.  |________/\\_____|    `-.'\n"
+                +"              .'   ).| '=' '='\\/ '=' |\n"
+                +"              `._.'  '---------------'\n"
+                +"                      //___\\   //___\\\n"
+                +"                        ||       ||\n"
+                +"                        ||_.-.   ||_.-.\n"
+                +"                       (_.--__) (_.--__)\n"
+        );
+        System.out.print(ANSI_RESET);
         System.exit(0);
     }
     //endregion
