@@ -22,3 +22,11 @@ Bell Peppers, 16
 Olive Oil, 42
 Olives, 40
 Sweet Corn, 20
+Free Time, 9999999
+Plastic Knife, 20
+Plastic Spoon, 20
+Plastic Fork, 20
+Plastic Spork, 45
+Soap, 65
+Shampoo, 100
+Steak, 25

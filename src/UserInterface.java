@@ -35,7 +35,7 @@ public class UserInterface
     Products products;
 
     // which screen to display next is controlled using a variable which is changed at the end of each menu depending on user input
-    private int screenNumber = 1;
+    private int screenNumber = 1; // IMPORTANT
 
     public UserInterface(GroceryList shoppingList, Wallet wallet, Products products)
     {
@@ -72,12 +72,11 @@ public class UserInterface
                     break;
                 default:
                     mainMenu();
-                    break;
             }
         }
     }
 
-    //region Menus and stuff
+    //region Menus and stuff - professional
     // All menus follow the scheme shown in this menu, therefore only this one is heavily commented
     private void mainMenu()
     {
@@ -361,10 +360,9 @@ public class UserInterface
         }
 
     }
-
     private void supportMenu()
     {
-        headline(this.shopName, "Hi this is Prajit talking. How can I help you today sir?");
+        headline(this.shopName, "Hi this is Rajesh talking. How can I help you today, sir?");
 
         System.out.println(ANSI_RED +  "Actually I am currently unable to help you for I do now know how to help you sir I am so sorry I will return you to the main menu soon" + ANSI_RESET);
 
@@ -416,7 +414,7 @@ public class UserInterface
         System.exit(0);
     }
     //endregion
-
+    // Fin
     //region Nonimportant methods (prints etc)
     void print()
     {
