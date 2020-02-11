@@ -20,12 +20,14 @@ public class GroceryList {
     //endregion
 
     //region Methods
+    // adds item to the list
     public void add ( GroceryItemOrder item ) {
         if (list.size() < 10) {
             list.add (item);
         }
     }
 
+    // removes item from list ( as long as it exists )
     public void remove ( String name ) {
         int index = searchList(name);
 
@@ -38,6 +40,7 @@ public class GroceryList {
         }
     }
 
+    // searches for item in the list
     public int searchList ( String name ) {
         for ( int i = 0; i < list.size(); i++) {
             if (list.get(i).getName().toLowerCase().contains(name.toLowerCase())) {
@@ -47,6 +50,7 @@ public class GroceryList {
         return -1;
     }
 
+    // prints the contents of the list
     public void checkBasket () {
         if(list.isEmpty()) System.out.println("The Basket is empty");
         else
@@ -58,8 +62,10 @@ public class GroceryList {
         }
     }
 
+    // clears the list
     public void clearBasket () {list.clear();}
 
+    // prints a receipt
     public void printReceipt () {
         if(list.isEmpty()) System.out.println("The Basket is empty");
         else
@@ -73,6 +79,7 @@ public class GroceryList {
         }
     }
 
+    // calculates total price of items in basket
     public int  getTotalCost () {
         int totalCost = 0;
         for ( int i = 0; i < list.size(); i ++ ) {
